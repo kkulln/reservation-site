@@ -1,22 +1,27 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>予約サイト</title>
-</head>
-<body>
-
-<h1>予約テストページ</h1>
-
-<form id="reserveForm">
-  <input name="name" placeholder="名前"><br>
-  <button type="submit">送信</button>
-</form>
-
 <script>
 document.getElementById("reserveForm").addEventListener("submit", function(e) {
   e.preventDefault();
-  alert("HTMLとJavaScriptは動いています！");
+
+  const formData = new FormData(this);
+
+  fetch("https://thin-geese-cover.loca.lt/reserve", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      name: formData.get("name")
+    })
+  })
+  .then(res => res.json())
+  .then(data => {
+    alert("予約完了！");
+    console.log(data);
+  })
+  .catch(err => {
+    alert("エラーが出ました");
+    console.error(err);
+  });
 });
 </script>
 
