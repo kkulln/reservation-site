@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>予約サイト</title>
+</head>
+<body>
+
+<h1>予約テストページ</h1>
+
+<form id="reserveForm">
+  <input name="name" placeholder="名前"><br>
+  <button type="submit">送信</button>
+</form>
+
+<script>
+document.getElementById("reserveForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  alert("HTMLとJavaScriptは動いています！");
+});
+</script>
+
+</body>
+</html>
